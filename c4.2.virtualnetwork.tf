@@ -30,6 +30,9 @@ module "vnet" {
     costcenter = "it"
   }
   # insert the 2 required variables here
+  /*depends_on = [
+    azurerm_resource_group.myrg
+  ]*/
 }
 
 resource "azurerm_public_ip" "mypublicip" {
