@@ -1,25 +1,25 @@
 variable "business_unit" {
-  type = string
+  type    = string
   default = "hr"
 }
 
 variable "environment" {
-  type = string
+  type    = string
   default = "dev"
 }
 
 variable "resource_group_name" {
-  type = string
+  type    = string
   default = "myrg"
 }
 
 variable "resource_group_location" {
-  type = string
+  type    = string
   default = "East US"
 }
 
 variable "virtual_network_name" {
-  type = string
+  type    = string
   default = "myvnet"
 }
 
@@ -35,6 +35,6 @@ variable "network_interface_name" {
 }
 variable "virtual_machine_name" {
   type = string
-  
+
 }
 

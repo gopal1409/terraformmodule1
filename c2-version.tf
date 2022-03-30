@@ -8,16 +8,16 @@ terraform {
       version = "=2.97.0"
     }
   }
-  }
-  
+}
+
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
 }
 
 resource "random_string" "myrandom" {
-  length = 6
-  upper = false
+  length  = 6
+  upper   = false
   special = false
-  number = false 
+  number  = false
 }

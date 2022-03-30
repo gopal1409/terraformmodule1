@@ -19,30 +19,30 @@ CUSTOM_DATA
 
 #resource azure linux virtual machine
 resource "azurerm_linux_virtual_machine" "mylinuxvm" {
-  
-  name = local.vm_name
-  computer_name = local.vm_name
+
+  name                = local.vm_name
+  computer_name       = local.vm_name
   resource_group_name = azurerm_resource_group.myrg.name
-  location =  azurerm_resource_group.myrg.location
-  size = "Standard_DS1_v2"
-  admin_username = "azureuser"
+  location            = azurerm_resource_group.myrg.location
+  size                = "Standard_DS1_v2"
+  admin_username      = "azureuser"
   #first vm created attached with first nic second vm it should attach with second nic
   network_interface_ids = [azurerm_network_interface.myvmnic.id]
   admin_ssh_key {
-    username = "azureuser"
+    username   = "azureuser"
     public_key = file("${path.module}/ssh-keys/terraform-azure.pub")
   }
   os_disk {
-    name = "osdisk${random_string.myrandom.id}"
-    caching = "ReadWrite"
+    name                 = "osdisk${random_string.myrandom.id}"
+    caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
   source_image_reference {
     publisher = "Redhat"
-    offer = "RHEL"
-    sku = "83-gen2"
-    version = "latest"
+    offer     = "RHEL"
+    sku       = "83-gen2"
+    version   = "latest"
   }
- # custom_data = filebase64("${path.module}/app-scripts/redhat-webvm-script.sh")
- custom_data = base64encode(local.web_vm_custom_data)
+  # custom_data = filebase64("${path.module}/app-scripts/redhat-webvm-script.sh")
+  custom_data = base64encode(local.web_vm_custom_data)
 }
